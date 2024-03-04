@@ -50,6 +50,31 @@ let state_register = document.querySelector("#sTate");
 let zip_register = document.querySelector("#zIp");
 let register_btn = document.querySelector("#submit");
 
+let user_name = document.querySelector(".user-name");
+let user_email = document.querySelector(".user-email");
+// LocalStorage
+user_email.innerHTML = localStorage.getItem("username_login");
+
+// event thay đổi username
+let s = "";
+username_register.addEventListener("keyup", function (event) {
+  var isWordCharacter = event.key.length === 1;
+  console.log(event.keyCode);
+
+  console.log(event.key.match(/[a-z]/i));
+  if ((isWordCharacter && event.key.match(/[a-z]/i)) || event.keyCode === 32) {
+    // console.log(event.key);
+    // console.log("Phím chữ cái");
+    s = s + event.key;
+    console.log(s);
+    user_name.innerText = s;
+  } else {
+    // console.log(event.key);
+    // console.log("phím ko phải chữ cái");
+  }
+});
+
+// events create
 register_btn.addEventListener("click", function () {
   let username = username_register.value;
   let password = password_register.value;
